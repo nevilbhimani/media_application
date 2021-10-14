@@ -1,4 +1,5 @@
 import react from 'react';
+import Hook from './styletheme';
 import{useState,useEffect} from "react";
 import * as React from 'react';
 import Card from '@mui/material/Card';
@@ -8,10 +9,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@material-ui/core';
+import BasicPagination from './Pagination'
 
 const FetchData=()=>{
     const[Data,setData]=useState([]);
-
+    
     const getData=async ()=>{
       const response = await fetch("https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=12e4f2419663442e871227574db19ac6");
         setData (await response.json());
@@ -22,20 +24,23 @@ const FetchData=()=>{
     getData();
     },[]);
     console.log(Data)
+    
     return(
       <>
       {    console.log(Data.articles) }
-      <div>
+      <div >
           <h1>New articles</h1>
       </div>
+      <Grid container spacing={4}>
      { 
-       Data.articles.map((currentElement)=>{
+      Data.articles && Data.articles.map((currentElement)=>{
        return(
            <>
           
-           <Grid container spacing={4}  key={currentElement.author}> 
-           <Grid item xs={12} md={4}>
-        <Card sx={{  }}>
+            
+           <Grid item xs={12} md={4}  key={currentElement.author}>
+        
+        <Card >
         <CardMedia
           component="img"
           alt=""
@@ -55,13 +60,15 @@ const FetchData=()=>{
           <Button size="small">Learn More</Button>
         </CardActions>
       </Card>
-      
-      </Grid>
+    
+     
       </Grid>
       </>
             )
       })
-    }
+}
+</Grid>
+    <BasicPagination/>
     </>
   )
     
