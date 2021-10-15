@@ -9,8 +9,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@material-ui/core';
-import BasicPagination from './Pagination'
 
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
+ 
 const FetchData=()=>{
     const[Data,setData]=useState([]);
     
@@ -24,23 +27,39 @@ const FetchData=()=>{
     getData();
     },[]);
     console.log(Data)
-    
+
+     const [currentPage,setCurrentPage]=useState(1)
+   
+    function changeData(event) {
+        
+      const pageNumber = Number(event.target.textContent)
+      setCurrentPage( pageNumber)
+      }
+      let dataPerPage=5;
+      const indexOfFirst=(currentPage*dataPerPage)-dataPerPage
+        const indexOfLast=indexOfFirst+dataPerPage
+      
     return(
       <>
-      {    console.log(Data.articles) }
+     
       <div >
           <h1>New articles</h1>
       </div>
+      <Stack spacing={2}>
+       <Pagination count={10} onClick={changeData} color="primary" />
+       </Stack>
       <Grid container spacing={4}>
+      
+      
      { 
-      Data.articles && Data.articles.map((currentElement)=>{
+      Data.articles && Data.articles.slice(indexOfFirst,indexOfLast).map((currentElement)=>{
        return(
            <>
           
             
-           <Grid item xs={12} md={4}  key={currentElement.author}>
+           <Grid item xs={12} sm={6} md={4} xl={3} justifyContent="space-evenly" key={currentElement.author}>
         
-        <Card >
+        <Card elevation={12} >
         <CardMedia
           component="img"
           alt=""
@@ -51,13 +70,13 @@ const FetchData=()=>{
           <Typography gutterBottom variant="h5" component="div">
            {currentElement.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
            {currentElement.description}
-          </Typography>
+          </Typography> */}
         </CardContent>
         <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
+         
+          <Button size="small" onClick={()=>console.log("clicked",currentElement.title)}>Learn More</Button>
         </CardActions>
       </Card>
     
@@ -68,7 +87,7 @@ const FetchData=()=>{
       })
 }
 </Grid>
-    <BasicPagination/>
+    
     </>
   )
     
