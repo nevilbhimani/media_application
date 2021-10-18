@@ -1,5 +1,6 @@
 import react from "react";
 import Hook from "./styletheme";
+import LearnMore from "./LearnMore"
 import { useState, useEffect } from "react";
 import * as React from "react";
 import Card from "@mui/material/Card";
@@ -9,11 +10,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@material-ui/core";
-import { BrowserRouter as Router, Link, swicth, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-
-const FetchData = () => {
+import { textAlign } from "@mui/system";
+import Divider from "@mui/material/Divider";
+const FetchData = ({card,setCard}) => {
   const [Data, setData] = useState([]);
 
   const getData = async () => {
@@ -37,16 +39,20 @@ const FetchData = () => {
   let dataPerPage = 5;
   const indexOfFirst = currentPage * dataPerPage - dataPerPage;
   const indexOfLast = indexOfFirst + dataPerPage;
-
+ 
   return (
     <>
-      <div>
-        <h1>New articles</h1>
+    
+      <div >
+        <h1 styles={{textAlign: "center"}}>New articles</h1>
       </div>
+     
+      <Divider/>
+
       <Stack spacing={2}>
         <Pagination count={10} onClick={changeData} color="primary" />
       </Stack>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} className="grid">
         {Data.articles &&
           Data.articles
             .slice(indexOfFirst, indexOfLast)
@@ -60,9 +66,9 @@ const FetchData = () => {
                     md={4}
                     xl={3}
                     justifyContent="space-evenly"
-                    key={currentElement.author}
+                    key={currentElement.publishedAt}
                   >
-                    <Card elevation={12}>
+                    <Card elevation={12} className="cards">
                       <CardMedia
                         component="img"
                         alt=""
@@ -73,25 +79,33 @@ const FetchData = () => {
                         <Typography gutterBottom variant="h5" component="div">
                           {currentElement.title}
                         </Typography>
-                        {/* <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary">
                          {currentElement.description}
-                         </Typography> */}
+                         </Typography>
                       </CardContent>
                       <CardActions>
-                        <Button
+                      {/* <Router>
+                       <Switch>
+                      <Route path ={currentElement.title.replaceAll(" ","/")} component={LearnMore} description={currentElement.description}/>
+                                 </Switch>
+                                 </Router> */}
+                                  
+                                 {/* {currentElement.title.replaceAll(" ","/")} */} 
+                              
+                                <Button
                           size="small"
-                          onClick={() => (
-                            <>
-                              <Router>
-                                <Link
-                                  to={(window.location = currentElement.url)}
-                                ></Link>
-                              </Router>
-                            </>
-                          )}
-                        >
-                          Learn More
+                          onClick={()=>{
+                            setCard(
+                               currentElement
+                            )
+                          }}
+                        ><Router>
+                         <Link
+                          to="/LearnMore">LearnMore</Link> </Router>
                         </Button>
+                     
+                             
+                             
                       </CardActions>
                     </Card>
                   </Grid>

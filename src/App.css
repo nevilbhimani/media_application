@@ -13,7 +13,7 @@
   }
 }
 .App{
-  background-color: #282c34;
+  background-color: #fafcff;
 }
 .App-header {
   background-color: #282c34;
@@ -37,4 +37,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+nav{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color:darkcyan;
+  color:white;
+}
+
+.nav-Link{
+  width: 100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:flex-end
+}
+.cards:hover{
+  box-shadow: 0px 4px 8px 0 #494846;
+}
+.grid{
+  padding: 15px;
 }
