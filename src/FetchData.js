@@ -99,9 +99,9 @@ const FetchData = ({card,setCard}) => {
                                currentElement
                             )
                           }}
-                        ><Router>
+                        >
                          <Link
-                          to="/LearnMore">LearnMore</Link> </Router>
+                          to="/LearnMore">LearnMore</Link>
                         </Button>
                      
                              
