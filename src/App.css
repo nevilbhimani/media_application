@@ -59,3 +59,32 @@ nav{
 .grid{
   padding: 15px;
 }
+.image{
+  max-width: 50%;
+  margin-left: 25%;
+  display: block;
+ 
+  box-shadow: 0px 10px 10px 0px #202122;
+}
+.description{
+  font-size:30px;
+  
+  font-family: 'Courier New', Courier, monospace;
+}
+.div1{
+  max-width: 50%;
+  margin-left: 25%;
+  
+}
+.author{
+  margin-left: 30%;
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic;
+}
+.heading{
+  font-size :45px;
+  font-family: 'Times New Roman', Times, serif;
+  max-width: 75%;
+  margin-left: 12.5%;
+}

@@ -9,9 +9,10 @@ console.log(card)
 return(
 <>
     <nav className="nav-Link"><div><h3><Link to="/">Home</Link></h3></div></nav>
-    {/* <h2>{card.title}</h2> */}
-
-    
+    <h2 className="heading">{card.title}</h2>
+<img className="image" src={card.urlToImage}/>
+<div className="div1"><h4 className="description" >{card.description}</h4></div>
+    <h4 className="author">~{card.author}</h4>
    
  <footer></footer>
 </>

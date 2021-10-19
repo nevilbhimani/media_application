@@ -101,7 +101,7 @@ const FetchData = ({card,setCard}) => {
                           }}
                         >
                          <Link
-                          to="/LearnMore">LearnMore</Link>
+                          to= {currentElement.title.replaceAll(" ","/")}>LearnMore</Link>
                         </Button>
                      
                              

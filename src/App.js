@@ -23,8 +23,7 @@ import Typography from '@mui/material/Typography';
    <Router>
           <Switch>
           
-          <Route path ="/LearnMore" ><LearnMore card={card} setCard={setCard}/></Route>
-          
+          <Route path ="/:title" ><LearnMore card={card} setCard={setCard}/></Route>
           <Route path="/" exact={true}  ><FetchData card={card} setCard={setCard}/></Route>
           </Switch>
           </Router>
