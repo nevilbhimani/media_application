@@ -44,7 +44,7 @@ const FetchData = ({card,setCard}) => {
     <>
     
       <div >
-        <h1 styles={{textAlign: "center"}}>New articles</h1>
+        <h1 className="mainheader">Media Application</h1>
       </div>
      
       <Divider/>
@@ -80,7 +80,7 @@ const FetchData = ({card,setCard}) => {
                           {currentElement.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                         {currentElement.description}
+                         {/* {currentElement.description} */}
                          </Typography>
                       </CardContent>
                       <CardActions>

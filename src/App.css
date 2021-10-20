@@ -43,7 +43,7 @@ nav{
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background-color:darkcyan;
+  background-color:rgb(143, 143, 143);
   color:white;
 }
 
@@ -64,11 +64,11 @@ nav{
   margin-left: 25%;
   display: block;
  
-  box-shadow: 0px 10px 10px 0px #202122;
+  /* box-shadow:  4px  4px 5px #504e4e; */
 }
 .description{
   font-size:30px;
-  
+  color:white;
   font-family: 'Courier New', Courier, monospace;
 }
 .div1{
@@ -81,10 +81,23 @@ nav{
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
   font-style: italic;
+  color: white;
 }
 .heading{
   font-size :45px;
   font-family: 'Times New Roman', Times, serif;
   max-width: 75%;
   margin-left: 12.5%;
+  color: white;
+}
+.page{
+  background-color:#202122
+}
+.footsection{
+  background-color:rgb(143, 143, 143);
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.mainheader{
+  text-shadow: 0 3px 3px rgba(255, 255, 255, 0.)#202122;
 }
