@@ -22,8 +22,9 @@ const FetchData = ({card,setCard}) => {
   // const [date,setDate]= useState(["2021-10-10"]);
   
   const getData = async (startDate,endDate) => {
+    const proxyUrl = "http://cors-anywhere.herokuapp.com/"
     const response = await fetch(
-      `https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=${process.env.REACT_APP_apiKey}&pageSize=100`
+      `https://${proxyUrl}newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=${process.env.REACT_APP_apiKey}&pageSize=100`
       // "https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=12e4f2419663442e871227574db19ac6"
       );
      const arr= await response.json();
