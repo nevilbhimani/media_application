@@ -14,29 +14,36 @@ import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { textAlign } from "@mui/system";
+
 import Divider from "@mui/material/Divider";
+
 const FetchData = ({card,setCard}) => {
   const [Data, setData] = useState([]);
-
-  const getData = async () => {
+  // const [date,setDate]= useState(["2021-10-10"]);
+  
+  const getData = async (startDate,endDate) => {
     const response = await fetch(
-      "https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=12e4f2419663442e871227574db19ac6"
-    );
-    setData(await response.json());
+      `https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=${process.env.REACT_APP_apiKey}&pageSize=100`
+      // "https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=12e4f2419663442e871227574db19ac6"
+      );
+     const arr= await response.json();
+     console.log(arr);
+    setData(arr);
   };
 
   useEffect(() => {
     getData();
+    // getData(2021-9-11);
   }, []);
   console.log(Data);
 
   const [currentPage, setCurrentPage] = useState(1);
-
+  
   function changeData(event) {
     const pageNumber = Number(event.target.textContent);
     setCurrentPage(pageNumber);
   }
-  let dataPerPage = 5;
+  let dataPerPage = 10;
   const indexOfFirst = currentPage * dataPerPage - dataPerPage;
   const indexOfLast = indexOfFirst + dataPerPage;
  
@@ -112,6 +119,7 @@ const FetchData = ({card,setCard}) => {
                 </>
               );
             })}
+            {/* {setDate("2021-10-11")} */}
       </Grid>
     </>
   );
