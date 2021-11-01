@@ -1,6 +1,6 @@
 import react from "react";
 import Hook from "./styletheme";
-import LearnMore from "./LearnMore"
+import LearnMore from "./LearnMore";
 import { useState, useEffect } from "react";
 import * as React from "react";
 import Card from "@mui/material/Card";
@@ -17,17 +17,17 @@ import { textAlign } from "@mui/system";
 
 import Divider from "@mui/material/Divider";
 
-const FetchData = ({card,setCard}) => {
+const FetchData = ({ card, setCard }) => {
   const [Data, setData] = useState([]);
   // const [date,setDate]= useState(["2021-10-10"]);
-  
+
   const getData = async () => {
     const response = await fetch(
       `https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=${process.env.REACT_APP_apiKey}&pageSize=100`
       // "https://newsapi.org/v2/everything?q=Apple&from=2021-10-10&sortBy=popularity&apiKey=12e4f2419663442e871227574db19ac6"
-      );
-     const arr= await response.json();
-     console.log(arr);
+    );
+    const arr = await response.json();
+    console.log(arr);
     setData(arr);
   };
 
@@ -38,7 +38,7 @@ const FetchData = ({card,setCard}) => {
   console.log(Data);
 
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   function changeData(event) {
     const pageNumber = Number(event.target.textContent);
     setCurrentPage(pageNumber);
@@ -46,15 +46,14 @@ const FetchData = ({card,setCard}) => {
   let dataPerPage = 10;
   const indexOfFirst = currentPage * dataPerPage - dataPerPage;
   const indexOfLast = indexOfFirst + dataPerPage;
- 
+
   return (
     <>
-    
-      <div >
+      <div>
         <h1 className="mainheader">Media Application</h1>
       </div>
-     
-      <Divider/>
+
+      <Divider />
 
       <Stack spacing={2}>
         <Pagination count={10} onClick={changeData} color="primary" />
@@ -87,39 +86,35 @@ const FetchData = ({card,setCard}) => {
                           {currentElement.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                         {/* {currentElement.description} */}
-                         </Typography>
+                          {/* {currentElement.description} */}
+                        </Typography>
                       </CardContent>
                       <CardActions>
-                      {/* <Router>
+                        {/* <Router>
                        <Switch>
                       <Route path ={currentElement.title.replaceAll(" ","/")} component={LearnMore} description={currentElement.description}/>
                                  </Switch>
                                  </Router> */}
-                                  
-                                 {/* {currentElement.title.replaceAll(" ","/")} */} 
-                              
-                                <Button
+
+                        {/* {currentElement.title.replaceAll(" ","/")} */}
+
+                        <Button
                           size="small"
-                          onClick={()=>{
-                            setCard(
-                               currentElement
-                            )
+                          onClick={() => {
+                            setCard(currentElement);
                           }}
                         >
-                         <Link
-                          to= {currentElement.title.replaceAll(" ","/")}>LearnMore</Link>
+                          <Link to={currentElement.title.replaceAll(" ", "-")}>
+                            LearnMore
+                          </Link>
                         </Button>
-                     
-                             
-                             
                       </CardActions>
                     </Card>
                   </Grid>
                 </>
               );
             })}
-            {/* {setDate("2021-10-11")} */}
+        {/* {setDate("2021-10-11")} */}
       </Grid>
     </>
   );

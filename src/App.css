@@ -101,3 +101,8 @@ nav{
 .mainheader{
   text-shadow: 0 3px 3px rgba(255, 255, 255, 0.)#202122;
 }
+
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+  background-color: #000000 !important;
+}
